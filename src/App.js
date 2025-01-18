@@ -37,23 +37,22 @@ const App = () => {
     <div>
    <nav className="navbar">
       <div className="logo">
-        <img className="logo_img" src={require("./world.png")} alt="Logo" />
+        <img onClick={() => scrollToSection("home")} className="logo_img" src={require("./world.png")} alt="Logo" />
       </div>
-      {/* Botão de menu só aparece em telas pequenas */}
-      <div className="menu-toggle" onClick={toggleMenu}>
-        ☰
-      </div>
-      <ul className={`nav-links ${menuActive ? "active" : ""}`}>
-    
-        <li onClick={() => scrollToSection("contact")}>Contato</li>
-          <li onClick={() => scrollToSection("catalog")}>Catálogo</li>
-          <li onClick={() => scrollToSection("location")}>Localização</li>
-      </ul>
-    </nav>
 
-      {/* Navbar */}
+        <div className="menu-toggle" onClick={toggleMenu}>
+          ☰
+        </div>
+        <div className={`nav-links ${menuActive ? "active" : ""}`}>
+          <button className="button_nav" onClick={() => scrollToSection("contact")}>Contato</button>
+          <button className="button_nav" onClick={() => scrollToSection("catalog")}>Catálogo</button>
+          <button className="button_nav" onClick={() => scrollToSection("location")}>Localização</button>
+        </div>
+          </nav>
+
+        {/* Navbar */}
       
-      <section
+      <section id="home"
       className="custom-section"
       style={{
         backgroundImage: `url(${images[currentIndex]})`,
