@@ -11,7 +11,22 @@ const App = () => {
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
   };
 
+  const images = [
+    "https://img.odcdn.com.br/wp-content/uploads/2020/12/Apple_announce-iphone12pro_10132020.jpg",
+    "https://img.freepik.com/fotos-premium/tecnico-que-repara-o-interior-do-telefone-celular-com-o-ferro-de-solda_39768-2780.jpg",
+    "https://d1ih8jugeo2m5m.cloudfront.net/2022/09/revenda-eletronicos-1200x685.jpg",
+  ];
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+  useEffect(() => {
+    // Define o intervalo para trocar as imagens
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 9000); // Troca a cada 2 segundos
+
+    // Limpa o intervalo ao desmontar o componente
+    return () => clearInterval(interval);
+  }, [images.length]);
   
   
     const toggleMenu = () => {
@@ -38,7 +53,15 @@ const App = () => {
 
       {/* Navbar */}
       
-      <section className="custom-section">
+      <section
+      className="custom-section"
+      style={{
+        backgroundImage: `url(${images[currentIndex]})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <h1 className="center-text">World Cell</h1>
     </section>
       
@@ -198,6 +221,9 @@ const App = () => {
         </div>
       </section>
     </div>
+
+
+
   );
 };
 

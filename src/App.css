@@ -230,14 +230,15 @@ body {
 .custom-section {
   height: 65vh; /* 65% da altura da viewport */
   width: 100%;
-  max-width: 100%; /* 100% da largura da viewport */
+  max-width: 100%;
   background: url('https://img.odcdn.com.br/wp-content/uploads/2020/12/Apple_announce-iphone12pro_10132020.jpg') no-repeat center center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0; /* Remove margens externas */
-  padding: 0; /* Remove preenchimento interno */
-  overflow: hidden; /* Garante que não há rolagem indesejada */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  transition: background-image 1s ease-in-out; /* Transição suave */
 }
 
 .center-text {
@@ -247,6 +248,7 @@ body {
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
   text-align: center;
 }
+
 
 
 /* Media Queries para telas menores */
