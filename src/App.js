@@ -6,22 +6,36 @@ import "slick-carousel/slick/slick-theme.css";
 
 const App = () => {
   // Função para rolar até a seção clicada
+  const [menuActive, setMenuActive] = useState(false);
   const scrollToSection = (id) => {
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
   };
 
+
+  
+  
+    const toggleMenu = () => {
+      setMenuActive(!menuActive);
+    };
+
   return (
     <div>
-      <nav className="navbar">
-        <div className="logo">
-          <img className="logo_img" src={require('./world.png')} alt="Logo" />
-        </div>
-        <ul className="nav-links">
-          <li onClick={() => scrollToSection("contact")}>Contato</li>
+   <nav className="navbar">
+      <div className="logo">
+        <img className="logo_img" src={require("./world.png")} alt="Logo" />
+      </div>
+      {/* Botão de menu só aparece em telas pequenas */}
+      <div className="menu-toggle" onClick={toggleMenu}>
+        ☰
+      </div>
+      <ul className={`nav-links ${menuActive ? "active" : ""}`}>
+    
+        <li onClick={() => scrollToSection("contact")}>Contato</li>
           <li onClick={() => scrollToSection("catalog")}>Catálogo</li>
           <li onClick={() => scrollToSection("location")}>Localização</li>
-        </ul>
-      </nav>
+      </ul>
+    </nav>
+
       {/* Navbar */}
       
       <section className="custom-section">

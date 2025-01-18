@@ -1,21 +1,22 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Remove a rolagem horizontal */
+  box-sizing: border-box; /* Garante que o padding seja considerado dentro do tamanho */
+}
+
+
 /* Geral */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
+  max-width: 100%; /* Prevent horizontal scroll */
 }
-
-.section {
-  padding: 50px 20px;
-
-
-}.logo_img{
-  width: 110px;
-}
-
-
 /* Navbar */
 .navbar {
   display: flex;
@@ -25,8 +26,12 @@ body {
   padding: 10px 20px;
   color: rgb(250, 250, 250);
   position: sticky;
-  top: -10;
+  top: 0; /* Ajuste para manter a barra fixa corretamente */
   z-index: 1000;
+}
+
+.logo_img {
+  width: 110px;
 }
 
 .nav-links {
@@ -44,6 +49,69 @@ body {
 
 .nav-links li:hover {
   text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column; /* Coloca os links em coluna */
+    gap: 10px; /* Ajusta o espaçamento entre os links */
+    display: none; /* Oculta o menu por padrão */
+    position: absolute;
+    top: 100%; /* Posiciona logo abaixo da navbar */
+    right: 0;
+    background-color: #000000; /* Fundo da navbar */
+    padding: 10px 20px;
+    border-radius: 8px;
+  }
+
+  .nav-links.active {
+    display: flex; /* Mostra o menu quando ativo */
+  }
+
+  .menu-toggle {
+    display: block; /* Mostra o botão de menu */
+    cursor: pointer;
+    font-size: 24px;
+    color: rgb(3, 204, 64);
+  }
+}
+
+@media (max-width: 480px) {
+  .logo_img {
+    width: 80px; /* Reduz o tamanho do logo em telas menores */
+  }
+}
+/* Esconde o botão de menu em telas grandes */
+.menu-toggle {
+  display: none; /* Esconde o botão por padrão */
+}
+
+/* Exibe o botão de menu em telas menores */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* Mostra o botão em telas pequenas */
+    cursor: pointer;
+    font-size: 24px;
+    color: rgb(3, 204, 64);
+  }
+
+  .nav-links {
+    flex-direction: column; /* Coloca os links em coluna */
+    gap: 10px; /* Ajusta o espaçamento entre os links */
+    display: none; /* Oculta o menu por padrão */
+    position: absolute;
+    top: 100%; /* Posiciona logo abaixo da navbar */
+    right: 0;
+    background-color: #000000; /* Fundo da navbar */
+    padding: 10px 20px;
+    border-radius: 8px;
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex; /* Mostra o menu quando ativo */
+  }
 }
 
 /* Contato */
@@ -160,11 +228,16 @@ body {
 
 
 .custom-section {
-  height: 65vh; /* Metade da altura da tela */
+  height: 65vh; /* 65% da altura da viewport */
+  width: 100%;
+  max-width: 100%; /* 100% da largura da viewport */
   background: url('https://img.odcdn.com.br/wp-content/uploads/2020/12/Apple_announce-iphone12pro_10132020.jpg') no-repeat center center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0; /* Remove margens externas */
+  padding: 0; /* Remove preenchimento interno */
+  overflow: hidden; /* Garante que não há rolagem indesejada */
 }
 
 .center-text {
@@ -172,4 +245,26 @@ body {
   color: rgb(6, 240, 45);
   font-weight: bold;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  text-align: center;
 }
+
+
+/* Media Queries para telas menores */
+@media (max-width: 768px) {
+  .center-text {
+    font-size: 8vw; /* Ajusta o tamanho do texto em telas médias */
+  }
+}
+
+@media (max-width: 480px) {
+  .center-text {
+    font-size: 10vw; /* Ajusta o tamanho do texto em telas pequenas */
+  }
+
+  .custom-section {
+    padding: 10px; /* Reduz o padding em telas menores */
+  }.logo_img {
+    width: 90px;
+  }
+}
+
